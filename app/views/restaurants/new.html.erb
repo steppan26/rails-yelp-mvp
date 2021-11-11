@@ -1,0 +1,12 @@
+<h3>New Restaurant</h3>
+<%= link_to restaurants_path do %>
+  <p class="btn btn-outline-primary btn-back mb-1"><i class="fas fa-undo"></i> Back</p>
+<% end %>
+<%= simple_form_for(@restaurant) do |f| %>
+  <%= f.input :name, label: "Restaurant Name" %>
+  <%= f.input :address, label: "Address" %>
+  <%= f.input :phone_number, label: "Telephone number" %>
+  <%= f.select :category, Cuisine: Restaurant::CATEGORIES %>
+  <br>
+  <%= f.submit "Create New Restaurant", class:"btn btn-primary mt-3" %>
+<% end %>

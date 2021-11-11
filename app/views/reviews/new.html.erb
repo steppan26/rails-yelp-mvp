@@ -1,0 +1,9 @@
+<h3>New Review for <%= @restaurant.name %></h3>
+<%= link_to restaurant_path(@restaurant) do %>
+  <p class="btn btn-outline-primary btn-back mb-1"><i class="fas fa-undo"></i> Back</p>
+<% end %>
+<%= simple_form_for([@restaurant, @review]) do |f| %>
+  <%= f.input :content, label: "review" %>
+  <%= f.input :rating, as: :radio_buttons, collection: (0..5), item_wrapper_class: 'd-inline-flex mx-4' %>
+  <%= f.submit "Submit Review", class:"btn btn-primary" %>
+<% end %>

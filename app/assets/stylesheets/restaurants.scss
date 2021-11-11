@@ -1,0 +1,18 @@
+// Place all the styles related to the restaurants controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+li span {
+  font-size: 0.8em;
+}
+
+.btn-back {
+  border: none;
+}
+
+.btn-back:hover {
+  opacity: 0.8;
+}
+
+.new-custom {
+  text-align: right;
+}

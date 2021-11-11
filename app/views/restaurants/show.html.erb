@@ -1,0 +1,39 @@
+<%= link_to restaurants_path do %>
+  <p class="btn btn-outline-primary btn-back mb-1"><i class="fas fa-undo"></i> Back</p>
+<% end %>
+<div class="d-flex flex-column align-items-stretch justify-content-center">
+  <div class="card card-body mb-5">
+    <h3 class="card-title mb-0"><%= @restaurant.name %></h3>
+    <p class="card-text text-muted fs-4"><em><%= @restaurant.category.capitalize %></em></p>
+    <p class="fw-bolder mb-1"><u>Address:</u></p>
+    <p class="card-text"><%= @restaurant.address %></p>
+    <p class="fw-bolder mb-1"><u>Phone Number:</u></p>
+    <p class="card-text"><%= @restaurant.phone_number %></p>
+  </div>
+  <div class="card card-body">
+    <div class="d-flex justify-content-between">
+      <h3 class="card-title">Reviews</h3>
+      <%= link_to new_restaurant_review_path(@restaurant) do %>
+        <h3><i class="far fa-plus-square fs-5"></i></h3>
+      <% end %>
+    </div>
+    <ul class="p-0">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item list-group-item-action">
+          <div class="d-flex justify-content-between mb-2">
+            <h3 class="card-subtitle"><%= review.rating %> / 5</h3>
+            <div>
+              <%= link_to edit_review_path(review) do %>
+                <i class="far fa-edit button-custom"></i>
+              <% end %>
+              <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure you wish to delete this review?" } do %>
+                <i class="far fa-trash-alt color-red button-custom"></i>
+              <% end %>
+            </div>
+          </div>
+          <p class="card-text"><%= review.content %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

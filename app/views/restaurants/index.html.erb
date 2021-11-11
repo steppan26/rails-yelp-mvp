@@ -1,0 +1,23 @@
+<%= link_to new_restaurant_path, class: "text-end" do %>
+  <h6 class="new-custom button-custom">
+    Create New Restaurant
+    <i class="far fa-plus-square fs-5"></i>
+  </h6>
+<% end %>
+<ul class="list-group">
+  <% @restaurants.each do |restaurant| %>
+    <%= link_to restaurant_path(restaurant) do %>
+      <li class="list-group-item list-group-item-action d-flex justify-content-between">
+        <%= restaurant.name.upcase %><span class="text-muted"> - <%= restaurant.category.capitalize %></span>
+        <div>
+          <%= link_to edit_restaurant_path(restaurant) do %>
+            <i class="far fa-edit button-custom"></i>
+          <% end %>
+          <%= link_to restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure you wish to delete this review?" } do %>
+            <i class="far fa-trash-alt color-red button-custom"></i>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
